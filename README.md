@@ -1,2 +1,915 @@
-# MR AOUN INTRO 
-Create a VIP and professional boy 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050509">
+<meta name="description" content="LEGEND-X-AOUN — VIP Intro & Portfolio">
+<title>LEGEND-X-AOUN | VIP Intro & Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Fira+Code:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root {
+  --bg: #050509;
+  --panel: rgba(13,12,24,.9);
+  --gold: #ffd700;
+  --red: #ff1744;
+  --cyan: #00eaff;
+  --green: #25d366;
+  --muted: #a4adbd;
+  --glow-gold: 0 0 22px #ffd70055;
+  --glow-red: 0 0 22px #ff174455;
+  --glow-cyan: 0 0 22px #00eaff44;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--bg);
+  color: #fff;
+  font-family: 'Fira Code', monospace;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: .16;
+  background:
+    linear-gradient(transparent 50%, #0005 50%),
+    linear-gradient(90deg, #f004, #0f01, #00f4);
+  background-size: 100% 4px, 7px 100%;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #050509ef;
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid #ffd70044;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px clamp(12px, 4vw, 35px);
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--gold);
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-shadow: var(--glow-gold);
+  white-space: nowrap;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: .8rem;
+  color: #d5d9e2;
+}
+
+.nav a:hover {
+  color: var(--gold);
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pill,
+.music-btn {
+  border: 1px solid var(--red);
+  background: #ff17441a;
+  color: var(--gold);
+  padding: 8px 12px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: .78rem;
+  white-space: nowrap;
+  transition: .25s;
+}
+
+.pill:hover,
+.music-btn:hover {
+  background: var(--gold);
+  color: #050509;
+}
+
+.music-btn {
+  border-color: var(--green);
+  color: var(--green);
+  background: #25d36616;
+}
+
+#entry-portal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: radial-gradient(ellipse at center, #26000d, #050509 65%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  cursor: pointer;
+  transition: opacity .7s, visibility .7s;
+}
+
+#entry-portal.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.crown {
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  color: var(--gold);
+  filter: drop-shadow(0 0 24px #ffd70088);
+  animation: pulse 1.5s infinite;
+}
+
+.portal-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(#fff, var(--gold), var(--red));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+.portal-sub {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-size: clamp(.7rem, 3vw, 1rem);
+}
+
+.tap {
+  margin-top: 28px;
+  padding: 12px 22px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  color: var(--gold);
+  animation: blink 1.4s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.08) rotate(3deg);
+    filter: drop-shadow(0 0 35px #ff1744);
+  }
+}
+
+@keyframes blink {
+  50% { opacity: .5; }
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 105px 18px 55px;
+}
+
+section {
+  margin: 65px 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(240px, 380px) 1fr;
+  gap: 42px;
+  align-items: center;
+  min-height: 65vh;
+}
+
+.photo-shell {
+  padding: 9px;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, var(--gold), var(--red), var(--cyan)) 1;
+  background: var(--panel);
+  box-shadow: var(--glow-red), var(--glow-cyan);
+}
+
+.photo-frame {
+  aspect-ratio: 4/5;
+  max-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(145deg, #151522, #030305);
+  border: 1px solid #ffd70066;
+  position: relative;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-placeholder {
+  padding: 24px;
+  text-align: center;
+  color: var(--gold);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+}
+
+.owner-badge {
+  position: relative;
+  display: table;
+  margin: -16px auto 0;
+  background: #08080d;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 5px 17px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  z-index: 2;
+  box-shadow: var(--glow-gold);
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid var(--red);
+  color: var(--red);
+  padding: 5px 12px;
+  letter-spacing: 2px;
+  font-size: .75rem;
+  background: #ff174414;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.1rem, 6.5vw, 4.5rem);
+  line-height: 1.13;
+  margin: 17px 0;
+  text-shadow: 2px 2px var(--red), -2px -2px var(--cyan);
+  overflow-wrap: anywhere;
+}
+
+.typewriter {
+  color: var(--cyan);
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  min-height: 35px;
+}
+
+.intro-text {
+  color: #cbd5e1;
+  margin: 18px 0;
+  max-width: 680px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: .86rem;
+  transition: .25s;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  background: #ffd70012;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  background: var(--gold);
+  color: #050509;
+  box-shadow: var(--glow-gold);
+}
+
+.btn-wa {
+  background: #25d3661c;
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.btn-wa:hover {
+  background: var(--green);
+  color: #031108;
+}
+
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--gold);
+  font-size: clamp(1.35rem, 4vw, 2rem);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 24px;
+  text-shadow: var(--glow-gold);
+}
+
+.section-title:after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid #ff174455;
+  border-radius: 13px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+  backdrop-filter: blur(8px);
+}
+
+.card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--red), var(--gold), transparent);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: var(--glow-gold);
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.03rem;
+  margin-bottom: 10px;
+}
+
+.card p,
+.card li {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.poetry {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  font-size: 1.15rem;
+  line-height: 2.3;
+  text-align: right;
+  direction: rtl;
+  color: #fff;
+}
+
+.poetry-en {
+  color: var(--gold);
+  font-size: .78rem;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.skill-list {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.skill-list li {
+  margin: 7px 0;
+}
+
+.skill-list li i {
+  color: var(--gold);
+  margin-right: 7px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 14px;
+}
+
+.stat {
+  background: var(--panel);
+  border: 1px solid var(--red);
+  border-radius: 12px;
+  padding: 20px 12px;
+  text-align: center;
+  box-shadow: var(--glow-red);
+}
+
+.stat strong {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--gold);
+  font-size: 1.8rem;
+}
+
+.stat span {
+  font-size: .76rem;
+  color: var(--muted);
+}
+
+.terminal {
+  background: #03050b;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--glow-gold);
+}
+
+.terminal-bar {
+  background: #101729;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--gold);
+  font-size: .8rem;
+}
+
+.terminal-body {
+  padding: 16px;
+  height: 260px;
+  overflow-y: auto;
+  font-size: .85rem;
+}
+
+#term-output {
+  white-space: pre-wrap;
+  color: #dbeafe;
+  margin-bottom: 12px;
+}
+
+.term-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.term-prompt {
+  color: var(--red);
+  font-weight: bold;
+}
+
+#term-input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--cyan);
+  font: inherit;
+  width: 100%;
+  min-width: 0;
+}
+
+.small-note {
+  color: #8d98a9;
+  font-size: .78rem;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid #ffd70033;
+  padding: 28px 12px;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+footer strong {
+  color: var(--gold);
+}
+
+@media(max-width:800px) {
+  .nav { display: none; }
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .photo-shell {
+    max-width: 350px;
+    width: 100%;
+    margin: auto;
+  }
+  .hero-content { text-align: center; }
+  .hero-content .tag { margin: auto; }
+  .btn-row { justify-content: center; }
+  .intro-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  main { padding-top: 90px; }
+  section { margin: 52px 0; }
+}
+
+@media(max-width:420px) {
+  header { padding: 10px; }
+  .logo { font-size: .8rem; }
+  .pill, .music-btn {
+    padding: 7px 9px;
+    font-size: .68rem;
+  }
+  .header-actions { gap: 5px; }
+  .card { padding: 18px; }
+  .terminal-body { padding: 12px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ENTRY PORTAL -->
+<div id="entry-portal" role="button" tabindex="0" aria-label="Enter website">
+  <div class="crown">♛</div>
+  <div class="portal-title">LEGEND-X-AOUN</div>
+  <div class="portal-sub">WELCOME TO MY DIGITAL WORLD</div>
+  <div class="tap">
+    <i class="fa-solid fa-bolt"></i> TAP TO ENTER
+  </div>
+</div>
+
+<header>
+  <a class="logo" href="#home">♛ LEGEND-X-AOUN</a>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#about">ABOUT</a>
+    <a href="#poetry">POETRY</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#terminal">TERMINAL</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="music-btn" id="music-btn" type="button">
+      <i class="fa-solid fa-music"></i> MUSIC: OFF
+    </button>
+    <a class="pill" href="#contact">
+      <i class="fa-solid fa-paper-plane"></i> CONTACT
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- PROFILE SECTION -->
+  <section class="hero" id="home">
+    <div>
+      <div class="photo-shell">
+        <div class="photo-frame">
+          <!-- Add your photo in the same folder and name it profile.jpg -->
+          <img src="https://cdn.photo2url.com/uploads/2026/10/fbf64424-3fa6-4114-9bec-054123165686.jpg
+               alt="LEGEND-X-AOUN profile photo"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+
+          <div class="photo-placeholder" style="display:none">
+            <i class="fa-solid fa-crown" style="font-size:3rem"></i>
+            <br><img src="https://cdn.photo2url.com/uploads/2026/10/96b723e0-7565-4ddf-a140-90a694d3d880.jpg" alt="FB_IMG_1792208018940.jpg" />
+          </div>
+        </div>
+      </div>
+      <div class="owner-badge">★ THE OWNER ★</div>
+    </div>
+
+    <div class="hero-content">
+      <span class="tag">
+        <i class="fa-solid fa-shield-halved"></i> OFFICIAL INTRO
+      </span>
+
+      <h1>LEGEND-X-AOUN</h1>
+
+      <div class="typewriter" id="typewriter">
+        Creative Mind • Digital Creator
+      </div>
+
+      <p class="intro-text">
+        Welcome to my digital world. A premium space for creativity,
+        poetry, technology and personal style. Stay original, stay focused,
+        and keep building your legend.
+      </p>
+
+      <div class="btn-row">
+        <!-- Replace this link with your real WhatsApp link -->
+        <a class="btn btn-wa" href="https://whatsapp.com/channel/0029VbBu9daIXnlys5lDMI1u""
+           target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+        </a>
+
+        <a class="btn" href="#about">
+          <i class="fa-solid fa-user-astronaut"></i> EXPLORE PROFILE
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2 class="section-title">
+      <i class="fa-solid fa-crown"></i> ABOUT ME
+    </h2>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-user-astronaut"></i>
+        </div>
+        <h3>WHO AM I?</h3>
+        <p>
+          I am LEGEND-X-AOUN — building my own digital identity with
+          creativity, confidence and a premium style.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+        <h3>MY VISION</h3>
+        <p>
+          Learn something new, create meaningful content, and turn
+          every idea into a better project.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-gem"></i>
+        </div>
+        <h3>MY VIBE</h3>
+        <p>
+          Royal look. Clear goals. Unique identity.
+          Respect for everyone — fear of no challenge.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- URDU POETRY -->
+  <section id="poetry">
+    <h2 class="section-title">
+      <i class="fa-solid fa-feather-pointed"></i> URDU POETRY
+    </h2>
+
+    <div class="grid">
+      <article class="card">
+        <div class="poetry">
+          ہم اپنی پہچان خود بناتے ہیں،<br>
+          وقت کے ساتھ نہیں، وقت کو بدلتے ہیں۔
+        </div>
+        <div class="poetry-en">01 / SELF BELIEF</div>
+      </article>
+
+      <article class="card">
+        <div class="poetry">
+          خاموشی ہماری کمزوری نہیں،<br>
+          یہ ہمارے صبر کی زبان ہے۔
+        </div>
+        <div class="poetry-en">02 / SILENT POWER</div>
+      </article>
+
+      <article class="card">
+        <div class="poetry">
+          منزل انہی کو ملتی ہے،<br>
+          جن کے خوابوں میں جان ہوتی ہے۔
+        </div>
+        <div class="poetry-en">03 / KEEP GOING</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS AND INTERESTS -->
+  <section id="skills">
+    <h2 class="section-title">
+      <i class="fa-solid fa-microchip"></i> MY INTERESTS
+    </h2>
+
+    <div class="grid">
+      <article class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <h3>WEB DESIGN</h3>
+        <p>
+          Modern layouts, responsive pages and creative visual ideas.
+        </p>
+        <ul class="skill-list">
+          <li><i class="fa-brands fa-html5"></i> HTML</li>
+          <li><i class="fa-brands fa-css3-alt"></i> CSS</li>
+          <li><i class="fa-brands fa-js"></i> JavaScript</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3>CYBER AWARENESS</h3>
+        <p>
+          Learning digital safety, privacy, secure passwords
+          and responsible technology use.
+        </p>
+        <ul class="skill-list">
+          <li><i class="fa-solid fa-check"></i> Online safety</li>
+          <li><i class="fa-solid fa-check"></i> Privacy basics</li>
+          <li><i class="fa-solid fa-check"></i> Ethical learning</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-photo-film"></i>
+        </div>
+        <h3>CONTENT CREATION</h3>
+        <p>
+          Social media branding, short-form edits, captions
+          and creative Urdu content.
+        </p>
+        <ul class="skill-list">
+          <li><i class="fa-solid fa-check"></i> Video ideas</li>
+          <li><i class="fa-solid fa-check"></i> HEAKER BOY</li>
+          <li><i class="fa-solid fa-check"></i> Profile branding</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section id="stats">
+    <h2 class="section-title">
+      <i class="fa-solid fa-chart-line"></i> MY SPACE
+    </h2>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>∞</strong>
+        <span>IDEAS</span>
+      </div>
+
+      <div class="stat">
+        <strong>24/7</strong>
+        <span>LEARNING MODE</span>
+      </div>
+
+      <div class="stat">
+        <strong>100%</strong>
+        <span>ORIGINAL VIBE</span>
+      </div>
+
+      <div class="stat">
+        <strong>VIP</strong>
+        <span>PERSONAL STYLE</span>
+      </div>
+    </div>
+
+    <p class="small-note">
+      Decorative profile stats — replace these with real figures if needed.
+    </p>
+  </section>
+
+  <!-- INTERACTIVE TERMINAL -->
+  <section id="terminal">
+    <h2 class="section-title">
+      <i class="fa-solid fa-terminal"></i> LEGEND TERMINAL
+    </h2>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span>
+          <i class="fa-solid fa-circle" style="color:#ff5f57"></i>
+          <i class="fa-solid fa-circle" style="color:#febc2e"></i>
+          <i class="fa-solid fa-circle" style="color:#28c840"></i>
+        </span>
+        <span>legend-x-aoun@web:~</span>
+      </div>
+
+      <div class="terminal-body">
+        <div id="term-output">LEGEND-X-AOUN interactive terminal
+Type "help" to see available commands.
+
+</div>
+
+        <form class="term-row" id="term-form">
+          <label class="term-prompt" for="term-input">
+            legend-x-aoun#
+          </label>
+
+          <input id="term-input"
+                 autocomplete="off"
+                 spellcheck="false"
+                 aria-label="Terminal command"
+                 placeholder="type help and press Enter">
+        </form>
+      </div>
+    </div>
+
+    <p class="small-note">
+      This is a simulated terminal for fun. It does not run real system commands.
+    </p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <h2 class="section-title">
+      <i class="fa-solid fa-satellite-dish"></i> CONNECT WITH ME
+    </h2>
+
+    <div class="card">
+      <h3>LET'S CONNECT 👑</h3>
+      <p>
+        Follow my updates and stay connected.
+        Add your real social links to the buttons below.
+      </p>
+
+      <div class="btn-row">
+        <!-- Replace these sample URLs with your own links -->
+        <a class="btn btn-wa"
+           href="https://whatsapp.com/channel/0029VbBu9daIXnlys5lDMI1u""
+           target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+        </a>
+
+        <a class="btn"
+           href="https://www.tiktok.com/"COMING SOON
+           target="_blank" rel="noopener">
+          <i class="fa-brands fa-tiktok"></i> TIKTOK
+        </a>
+
+        <a class="btn"
+           href="https://www.instagram.com/"COMING SOON
+           target="_blank" rel="noopy
